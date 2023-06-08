@@ -1,11 +1,14 @@
 "use client";
+
 import * as React from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 
+import useRegisterModal from "@/hooks/use-register-modal";
 import Avatar from "@/components/avatar";
 import MenuItem from "@/components/navbar/menu-item";
 
 const UserMenu = () => {
+  const registerModal = useRegisterModal();
   const [isOpen, setIsOpen] = React.useState(false);
   const toggleOpen = React.useCallback(() => setIsOpen((value) => !value), []);
 
@@ -34,7 +37,7 @@ const UserMenu = () => {
           <div className="flex flex-col cursor-pointer">
             <React.Fragment>
               <MenuItem label="Login" onClick={() => {}} />
-              <MenuItem label="Sign Up" onClick={() => {}} />
+              <MenuItem label="Sign Up" onClick={registerModal.onOpen} />
             </React.Fragment>
           </div>
         </div>
