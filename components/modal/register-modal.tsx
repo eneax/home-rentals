@@ -3,6 +3,7 @@
 import * as React from "react";
 import axios from "axios";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 import useRegisterModal from "@/hooks/use-register-modal";
 import Modal from "./modal";
@@ -33,10 +34,10 @@ const RegisterModal = () => {
       console.log(response);
       registerModal.onClose();
     } catch (error) {
-      console.log(error);
+      toast.error((error as Error).message ?? "Something went wrong");
+    } finally {
+      setIsLoading(false);
     }
-
-    setIsLoading(false);
   };
 
   const bodyContent = (
