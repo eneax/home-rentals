@@ -4,11 +4,14 @@ import * as React from "react";
 import axios from "axios";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import { FcGoogle } from "react-icons/fc";
+import { AiFillGithub } from "react-icons/ai";
 
 import useRegisterModal from "@/hooks/use-register-modal";
 import Modal from "./modal";
 import Heading from "@/components/heading";
 import Input from "@/components/inputs/input";
+import Button from "@/components/button";
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
@@ -73,10 +76,40 @@ const RegisterModal = () => {
     </div>
   );
 
+  const footerContent = (
+    <React.Fragment>
+      <hr />
+
+      <Button
+        outline
+        label="Continue with Google"
+        icon={FcGoogle}
+        onClick={() => {}}
+      />
+      <Button
+        outline
+        label="Continue with GitHub"
+        icon={AiFillGithub}
+        onClick={() => {}}
+      />
+
+      <div className="flex items-center justify-center text-center gap-2 mt-4">
+        <p className="font-light text-neutral-500">Already have an account?</p>
+        <button
+          onClick={registerModal.onClose}
+          className="text-neutral-800 hover:underline cursor-pointer"
+        >
+          Login
+        </button>
+      </div>
+    </React.Fragment>
+  );
+
   return (
     <Modal
       title="Register"
       body={bodyContent}
+      footer={footerContent}
       actionLabel="Continue"
       disabled={isLoading}
       isOpen={registerModal.isOpen}

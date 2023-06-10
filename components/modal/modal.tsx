@@ -100,6 +100,10 @@ const Modal: React.FC<ModalProps> = ({
                     onClick={handleSubmit}
                   />
                 </div>
+
+                {footer && (
+                  <div className="flex flex-col gap-4 mt-3">{footer}</div>
+                )}
               </div>
             </div>
           </div>
