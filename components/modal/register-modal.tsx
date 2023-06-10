@@ -6,6 +6,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
+import { signIn } from "next-auth/react";
 
 import useRegisterModal from "@/hooks/use-register-modal";
 import Modal from "./modal";
@@ -90,7 +91,7 @@ const RegisterModal = () => {
         outline
         label="Continue with GitHub"
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn("github")}
       />
 
       <div className="flex items-center justify-center text-center gap-2 mt-4">

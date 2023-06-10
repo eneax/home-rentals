@@ -93,7 +93,7 @@ const LoginModal = () => {
         outline
         label="Continue with GitHub"
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn("github")}
       />
 
       <div className="flex items-center justify-center text-center gap-2 mt-4">
