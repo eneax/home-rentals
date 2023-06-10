@@ -4,11 +4,14 @@ import * as React from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 
 import useRegisterModal from "@/hooks/use-register-modal";
+import useLoginModal from "@/hooks/use-login-modal";
+
 import Avatar from "@/components/avatar";
 import MenuItem from "@/components/navbar/menu-item";
 
 const UserMenu = () => {
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
   const [isOpen, setIsOpen] = React.useState(false);
   const toggleOpen = React.useCallback(() => setIsOpen((value) => !value), []);
 
@@ -36,7 +39,7 @@ const UserMenu = () => {
         <div className="absolute right-0 top-12 overflow-hidden w-[40vw] md:w-3/4 bg-white rounded-xl shadow-md text-sm">
           <div className="flex flex-col cursor-pointer">
             <React.Fragment>
-              <MenuItem label="Login" onClick={() => {}} />
+              <MenuItem label="Login" onClick={loginModal.onOpen} />
               <MenuItem label="Sign Up" onClick={registerModal.onOpen} />
             </React.Fragment>
           </div>
