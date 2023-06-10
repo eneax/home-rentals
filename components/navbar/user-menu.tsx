@@ -3,7 +3,8 @@
 import * as React from "react";
 import { signOut } from "next-auth/react";
 import { AiOutlineMenu } from "react-icons/ai";
-import { User } from "@prisma/client";
+
+import { SafeUser } from "@/types";
 
 import useRegisterModal from "@/hooks/use-register-modal";
 import useLoginModal from "@/hooks/use-login-modal";
@@ -12,7 +13,7 @@ import Avatar from "@/components/avatar";
 import MenuItem from "@/components/navbar/menu-item";
 
 interface UserMenuProps {
-  currentUser?: User | null;
+  currentUser?: SafeUser | null;
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
