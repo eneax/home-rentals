@@ -9,7 +9,8 @@ const formattedCountries = countries.map((country) => ({
 }));
 
 const useCountries = () => {
-  const getAll = () => formattedCountries;
+  const getAll = () =>
+    formattedCountries.sort((a, b) => a.label.localeCompare(b.label));
 
   const getByValue = (value: string) =>
     formattedCountries.find((country) => country.value === value);
