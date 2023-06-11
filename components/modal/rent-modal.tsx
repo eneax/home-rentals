@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { FieldValues, useForm } from "react-hook-form";
+import dynamic from "next/dynamic";
 
 import useRentModal from "@/hooks/use-rent-modal";
 import Modal from "@/components/modal/modal";
@@ -46,6 +47,12 @@ const RentModal = () => {
 
   const category = watch("category");
   const location = watch("location");
+
+  const Map = React.useMemo(
+    () => dynamic(() => import("@/components/map"), { ssr: false }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [location]
+  );
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -108,6 +115,7 @@ const RentModal = () => {
           value={location}
           onChange={(value) => setCustomValue("location", value)}
         />
+        <Map center={location?.latlng} />
       </div>
     );
   }
