@@ -101,10 +101,13 @@ const LoginModal = () => {
           Don&apos;t have an account?
         </p>
         <button
-          onClick={registerModal.onClose}
+          onClick={() => {
+            loginModal.onClose();
+            registerModal.onOpen();
+          }}
           className="text-neutral-800 hover:underline cursor-pointer"
         >
-          Register
+          Register now
         </button>
       </div>
     </React.Fragment>

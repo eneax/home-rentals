@@ -9,6 +9,8 @@ import { AiFillGithub } from "react-icons/ai";
 import { signIn } from "next-auth/react";
 
 import useRegisterModal from "@/hooks/use-register-modal";
+import useLoginModal from "@/hooks/use-login-modal";
+
 import Modal from "./modal";
 import Heading from "@/components/heading";
 import Input from "@/components/inputs/input";
@@ -16,6 +18,7 @@ import Button from "@/components/button";
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = React.useState(false);
 
   const {
@@ -97,7 +100,10 @@ const RegisterModal = () => {
       <div className="flex items-center justify-center text-center gap-2 mt-4">
         <p className="font-light text-neutral-500">Already have an account?</p>
         <button
-          onClick={registerModal.onClose}
+          onClick={() => {
+            registerModal.onClose();
+            loginModal.onOpen();
+          }}
           className="text-neutral-800 hover:underline cursor-pointer"
         >
           Login
