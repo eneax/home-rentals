@@ -203,6 +203,27 @@ const RentModal = () => {
     );
   }
 
+  if (step === STEPS.PRICE) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="How much do you want to charge per night?"
+          subtitle="Set a price!"
+        />
+        <Input
+          id="price"
+          label="Price"
+          type="number"
+          formatPrice
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
+      </div>
+    );
+  }
+
   return (
     <Modal
       title="Airbnb your home"
