@@ -11,6 +11,7 @@ import { categories } from "@/components/navbar/categories";
 import CategoryInput from "@/components/inputs/category-input";
 import CountrySelect from "@/components/inputs/country-select";
 import Counter from "@/components/inputs/counter";
+import ImageUpload from "@/components/inputs/image-upload";
 
 enum STEPS {
   CATEGORY = 0,
@@ -51,6 +52,7 @@ const RentModal = () => {
   const guestCount = watch("guestCount");
   const roomCount = watch("roomCount");
   const bathRoomCount = watch("bathRoomCount");
+  const imageSrc = watch("imageSrc");
 
   const Map = React.useMemo(
     () => dynamic(() => import("@/components/map"), { ssr: false }),
@@ -151,6 +153,21 @@ const RentModal = () => {
           subtitle="How many bathrooms do you have?"
           value={bathRoomCount}
           onChange={(value) => setCustomValue("bathRoomCount", value)}
+        />
+      </div>
+    );
+  }
+
+  if (step === STEPS.IMAGES) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Add a photo of your place"
+          subtitle="Showcase your place!"
+        />
+        <ImageUpload
+          value={imageSrc}
+          onChange={(value) => setCustomValue("imageSrc", value)}
         />
       </div>
     );
