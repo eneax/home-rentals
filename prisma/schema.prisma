@@ -1,6 +1,10 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+// TODO: 
+// npx prisma generate
+// npx prisma db push
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -21,7 +25,7 @@ model User {
   updatedAt      DateTime  @updatedAt
   favoriteIds    String[]  @db.ObjectId // user can have many favorites
 
-  accounts     Account[] // user can have many accounts
+  accounts     Account[] // user can have many accounts (google, github, etc)
   listings     Listing[] // user can have many listings
   reservations Reservation[] // user can have many reservations
 }
@@ -76,5 +80,5 @@ model Reservation {
   totalPrice Int
 
   user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  Listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
 }
