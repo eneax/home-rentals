@@ -1,8 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { FieldValues, useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 import useRentModal from "@/hooks/use-rent-modal";
 import Modal from "@/components/modal/modal";
@@ -24,6 +27,7 @@ enum STEPS {
 }
 
 const RentModal = () => {
+  const router = useRouter();
   const rentModal = useRentModal();
   const [step, setStep] = React.useState(STEPS.CATEGORY);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -44,7 +48,7 @@ const RentModal = () => {
       location: null,
       guestCount: 1,
       roomCount: 1,
-      bathRoomCount: 1,
+      bathroomCount: 1,
       imageSrc: "",
     },
   });
@@ -53,7 +57,7 @@ const RentModal = () => {
   const location = watch("location");
   const guestCount = watch("guestCount");
   const roomCount = watch("roomCount");
-  const bathRoomCount = watch("bathRoomCount");
+  const bathroomCount = watch("bathroomCount");
   const imageSrc = watch("imageSrc");
 
   const Map = React.useMemo(
@@ -72,6 +76,27 @@ const RentModal = () => {
 
   const onBack = () => setStep((value) => value - 1);
   const onNext = () => setStep((value) => value + 1);
+
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    if (step !== STEPS.PRICE) {
+      return onNext();
+    }
+
+    setIsLoading(true);
+
+    try {
+      await axios.post("/api/listings", data);
+      toast.success("Listing created!");
+      router.refresh();
+      reset();
+      setStep(STEPS.CATEGORY);
+      rentModal.onClose();
+    } catch (error) {
+      toast.error("Something went wrong!");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const actionLabel = React.useMemo(() => {
     if (step === STEPS.PRICE) {
@@ -153,8 +178,8 @@ const RentModal = () => {
         <Counter
           title="Bathrooms"
           subtitle="How many bathrooms do you have?"
-          value={bathRoomCount}
-          onChange={(value) => setCustomValue("bathRoomCount", value)}
+          value={bathroomCount}
+          onChange={(value) => setCustomValue("bathroomCount", value)}
         />
       </div>
     );
@@ -233,7 +258,7 @@ const RentModal = () => {
       body={bodyContent}
       isOpen={rentModal.isOpen}
       onClose={rentModal.onClose}
-      onSubmit={onNext}
+      onSubmit={handleSubmit(onSubmit)}
     />
   );
 };
