@@ -7,8 +7,7 @@ import { Range } from "react-date-range";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
-import { SafeListing, SafeUser } from "@/types";
-import { Reservation } from "@prisma/client";
+import { SafeListing, SafeReservation, SafeUser } from "@/types";
 import useLoginModal from "@/hooks/use-login-modal";
 
 import { categories } from "@/components/navbar/categories";
@@ -28,7 +27,7 @@ interface IndividualListingProps {
   listing: SafeListing & {
     user: SafeUser;
   };
-  reservations?: Reservation[];
+  reservations?: SafeReservation[];
 }
 
 const IndividualListing: React.FC<IndividualListingProps> = ({
