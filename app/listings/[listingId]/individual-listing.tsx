@@ -77,8 +77,7 @@ const IndividualListing: React.FC<IndividualListingProps> = ({
 
       toast.success("Listing reserved!");
       setDateRange(INITIAL_DATE_RANGE);
-      // TODO: Redirect to /trips
-      router.refresh();
+      router.push("/trips");
     } catch (error) {
       toast.error((error as Error).message ?? "Something went wrong");
     } finally {
