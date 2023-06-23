@@ -15,6 +15,7 @@ import CountrySelect, {
   CountrySelectValue,
 } from "@/components/inputs/country-select";
 import Calendar from "@/components/inputs/calendar";
+import Counter from "@/components/inputs/counter";
 
 enum STEPS {
   LOCATION = 0,
@@ -150,6 +151,35 @@ const SearchModal: React.FC<SearchModalProps> = ({}) => {
         <Calendar
           value={dateRange}
           onChange={(value) => setDateRange(value.selection)}
+        />
+      </div>
+    );
+  }
+
+  if (step === STEPS.INFO) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="More information"
+          subtitle="Add more information about your stay"
+        />
+        <Counter
+          title="Guests"
+          subtitle="How many guests?"
+          value={guestCount}
+          onChange={(value) => setGuestCount(value)}
+        />
+        <Counter
+          title="Rooms"
+          subtitle="How many rooms do you need?"
+          value={roomCount}
+          onChange={(value) => setRoomCount(value)}
+        />
+        <Counter
+          title="Bathrooms"
+          subtitle="How many bathrooms do you need?"
+          value={bathroomCount}
+          onChange={(value) => setBathroomCount(value)}
         />
       </div>
     );
