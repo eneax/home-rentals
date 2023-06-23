@@ -10,10 +10,11 @@ import { formatISO } from "date-fns";
 import useSearchModal from "@/hooks/use-search-modal";
 
 import Modal from "./modal";
+import Heading from "@/components/heading";
 import CountrySelect, {
   CountrySelectValue,
 } from "@/components/inputs/country-select";
-import Heading from "@/components/heading";
+import Calendar from "@/components/inputs/calendar";
 
 enum STEPS {
   LOCATION = 0,
@@ -139,13 +140,30 @@ const SearchModal: React.FC<SearchModalProps> = ({}) => {
     </div>
   );
 
+  if (step === STEPS.DATE) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Add dates"
+          subtitle="Add your travel dates for exact pricing"
+        />
+        <Calendar
+          value={dateRange}
+          onChange={(value) => setDateRange(value.selection)}
+        />
+      </div>
+    );
+  }
+
   return (
     <Modal
       isOpen={searchModal.isOpen}
       onClose={searchModal.onClose}
-      onSubmit={searchModal.onOpen}
+      onSubmit={onSubmit}
       title="Filters"
-      actionLabel="Search"
+      actionLabel={actionLabel}
+      secondaryActionLabel={secondaryActionLabel}
+      secondaryAction={step === STEPS.LOCATION ? undefined : onBack}
       body={bodyContent}
     />
   );
