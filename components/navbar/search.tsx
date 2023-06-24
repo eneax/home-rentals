@@ -63,7 +63,7 @@ const Search = () => {
         </div>
         <div className="flex items-center gap-3 text-sm pl-6 pr-2 text-gray-600">
           <div className="hidden sm:block">{guestLabel}</div>
-          <div className="bg-rose-500 text-white p-2 rounded-full">
+          <div className="bg-black text-white p-2 rounded-full">
             <BiSearch size={18} />
           </div>
         </div>
