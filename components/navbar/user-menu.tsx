@@ -41,7 +41,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           onClick={onRent}
           className="hidden md:block font-semibold text-sm px-3 py-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
         >
-          My Home
+          Add a property
         </div>
         <div
           onClick={toggleOpen}
@@ -60,6 +60,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             {currentUser ? (
               <React.Fragment>
                 <MenuItem
+                  label="Guest reservations"
+                  onClick={() => router.push("/reservations")}
+                />
+                <MenuItem
                   label="My trips"
                   onClick={() => router.push("/trips")}
                 />
@@ -68,14 +72,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                   onClick={() => router.push("/favorites")}
                 />
                 <MenuItem
-                  label="My reservations"
-                  onClick={() => router.push("/reservations")}
-                />
-                <MenuItem
                   label="My properties"
                   onClick={() => router.push("/properties")}
                 />
-                <MenuItem label="My home" onClick={rentModal.onOpen} />
+                <MenuItem label="Add a property" onClick={rentModal.onOpen} />
 
                 <hr />
 

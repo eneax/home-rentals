@@ -251,7 +251,7 @@ const RentModal = () => {
 
   return (
     <Modal
-      title="My home"
+      title="Add a property"
       actionLabel={actionLabel}
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}

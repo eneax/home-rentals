@@ -42,8 +42,8 @@ const Reservations: React.FC<ReservationsProps> = ({
   return (
     <Container>
       <Heading
-        title="Reservations"
-        subtitle="Manage all your property reservations in one place."
+        title="Guest Reservations"
+        subtitle="Manage all your guest reservations in one place."
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8 mt-10">
         {reservations.map((reservation) => (
