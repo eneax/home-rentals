@@ -51,7 +51,7 @@ export const authOptions: AuthOptions = {
     }),
   ],
   pages: {
-    signIn: "/ ", // in case of error, redirect to index
+    signIn: "/", // in case of error, redirect to index
   },
   debug: process.env.NODE_ENV === "development",
   session: {
