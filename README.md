@@ -1,22 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Home Rentals
+
+A full stack application built with [Next.js](https://nextjs.org), [Tailwind CSS](https://tailwindcss.com), [NextAuth](https://next-auth.js.org), [Prisma](https://www.prisma.io), [MongoDB](https://www.mongodb.com/atlas/database) and deployed on [Vercel](https://vercel.com/home).
+
+## Environment Variables
+
+Create a `.env` file in your root directory:
+
+```js
+DATABASE_URL=
+
+GITHUB_ID=
+GITHUB_SECRET=
+
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+
+NEXTAUTH_SECRET=
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
+```
 
 ## Getting Started
 
-First, run the development server:
+Run this project locally:
 
 ```bash
+npm i
+
+npx prisma db push
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 ## Learn More
 
