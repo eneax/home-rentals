@@ -4,6 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { format } from "date-fns";
+import { AiOutlineFileImage } from "react-icons/ai";
 
 import useCountries from "@/hooks/use-countries";
 import { SafeListing, SafeReservation, SafeUser } from "@/types";
@@ -70,12 +71,18 @@ const ListingCard: React.FC<ListingCardProps> = ({
     >
       <div className="w-full flex flex-col gap-2">
         <div className="relative w-full overflow-hidden rounded-xl aspect-square">
-          <Image
-            fill
-            src={data.imageSrc}
-            alt={`Listing ${data.title}`}
-            className="w-full h-full object-cover group-hover:scale-110 transition"
-          />
+          {data.imageSrc ? (
+            <Image
+              fill
+              src={data.imageSrc}
+              alt={`Listing ${data.title}`}
+              className="w-full h-full object-cover group-hover:scale-110 transition"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400">
+              <AiOutlineFileImage size={50} />
+            </div>
+          )}
           <div className="absolute top-3 right-3">
             <HeartButton listingId={data.id} currentUser={currentUser} />
           </div>

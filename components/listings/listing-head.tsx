@@ -8,6 +8,7 @@ import useCountries from "@/hooks/use-countries";
 
 import Heading from "@/components/heading";
 import HeartButton from "@/components/heart-button";
+import { AiOutlineFileImage } from "react-icons/ai";
 
 interface ListingHeadProps {
   id: string;
@@ -35,12 +36,18 @@ const ListingHead: React.FC<ListingHeadProps> = ({
       />
 
       <div className="relative w-full h-[60vh] overflow-hidden rounded-xl">
-        <Image
-          fill
-          src={imageSrc}
-          alt={title}
-          className="object-cover w-full"
-        />
+        {imageSrc ? (
+          <Image
+            fill
+            src={imageSrc}
+            alt={title}
+            className="object-cover w-full"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400">
+            <AiOutlineFileImage size={50} />
+          </div>
+        )}
         <div className="absolute top-5 right-5">
           <HeartButton listingId={id} currentUser={currentUser} />
         </div>
