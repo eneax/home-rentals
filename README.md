@@ -1,6 +1,6 @@
 # Home Rentals
 
-A full stack application built with [Next.js](https://nextjs.org), [Tailwind CSS](https://tailwindcss.com), [NextAuth](https://next-auth.js.org), [Prisma](https://www.prisma.io), [MongoDB](https://www.mongodb.com/atlas/database) and deployed on [Vercel](https://vercel.com/home).
+A full stack application built with [Next.js](https://nextjs.org), [Tailwind CSS](https://tailwindcss.com), [NextAuth](https://next-auth.js.org), [Prisma](https://www.prisma.io) and [MongoDB](https://www.mongodb.com/atlas/database).
 
 ## Environment Variables
 
